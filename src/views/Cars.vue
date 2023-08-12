@@ -13,10 +13,8 @@
 </template>
 <script setup>
 import { ref, onMounted } from "vue";
-import axios from "axios";
+import axiosApiInstance from "../api";
 import { useAuthStore } from "../stores/auth";
-
-const token = useAuthStore().userInfo.token;
 
 const cars = ref([]);
 
@@ -24,8 +22,8 @@ const show = ref(false);
 
 onMounted(async () => {
   try {
-    const response = await axios.get(
-      `https://jtw-anatoliy-default-rtdb.europe-west1.firebasedatabase.app/cars.json?auth=${token}`
+    const response = await axiosApiInstance.get(
+      `https://jtw-anatoliy-default-rtdb.europe-west1.firebasedatabase.app/cars.json`
     );
     cars.value = response.data;
     show.value = true;
