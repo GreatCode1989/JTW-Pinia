@@ -14,7 +14,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import axiosApiInstance from "../api";
-import { useAuthStore } from "../stores/auth";
 
 const cars = ref([]);
 
